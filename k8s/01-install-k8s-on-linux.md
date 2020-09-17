@@ -210,6 +210,7 @@ tiger     Ready      master   12d   v1.19.0   192.168.99.111   <none>        Ubu
 ```
 
 #### 测试
+[kubernetes.yaml 代码](https://github.com/dengjunxp/my-note/blob/master/k8s/kubernetes.yaml)
 ```bash
 kubectl create -f kubernetes.yaml
 ```
