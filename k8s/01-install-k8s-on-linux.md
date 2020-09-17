@@ -74,6 +74,8 @@ sudo chown root:root /etc/yum.repos.d/kubernetes.repo
 sudo yum update -y
 
 sudo yum install kubectl kubeadm kubelet -y
+或指定版本
+sudo yum install kubectl-1.19.0 kubeadm-1.19.0 kubelet-1.19.0 -y
 ```
 
 安装好以后，一定要检查kubelet守护进程是否正常启动
