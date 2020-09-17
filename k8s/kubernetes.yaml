@@ -1,0 +1,83 @@
+# ----------------------------------------------------------------------------------------------------------------------
+# snowflake and kubernetes
+#   https://github.com/yingzhuo/snowflake
+# ----------------------------------------------------------------------------------------------------------------------
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: snowflake
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snowflake-0
+  namespace: snowflake
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: snowflake
+  template:
+    metadata:
+      labels:
+        app: snowflake
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: snowflake
+          image: "registry.cn-shanghai.aliyuncs.com/yingzhor/snowflake"
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+          env:
+            - name: SNOWFLAKE_NODE_ID
+              value: "0"
+            - name: SNOWFLAKE_INDENT
+              value: "false"
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snowflake-1
+  namespace: snowflake
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: snowflake
+  template:
+    metadata:
+      labels:
+        app: snowflake
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: snowflake
+          image: "registry.cn-shanghai.aliyuncs.com/yingzhor/snowflake"
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+          env:
+            - name: SNOWFLAKE_NODE_ID
+              value: "1"
+            - name: SNOWFLAKE_INDENT
+              value: "false"
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: snowflake
+  namespace: snowflake
+spec:
+  selector:
+    app: snowflake
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
