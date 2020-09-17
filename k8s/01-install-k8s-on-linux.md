@@ -119,6 +119,11 @@ sudo systemctl stop firewalld
 sudo systemctl disable firewalld
 ```
 
+iptables dose not exist
+```bash
+modprobe br_netfilter && echo 1 > /proc/sys/net/bridge/bridge-nf-call-iptables
+```
+
 编辑`/etc/selinux/config`
 
 ```text
