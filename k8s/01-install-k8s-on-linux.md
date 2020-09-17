@@ -101,6 +101,8 @@ sudo sysctl -p
 
 关闭swap
 
+swapoff -a
+
 编辑`/etc/fstab`
 
 ```text
