@@ -187,6 +187,14 @@ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl versio
 
 #### (7) 其他节点加入集群
 
+如果是centos系统，需要先确认是否存在以下DNS设置
+/run/systemd/resolve/resolv.conf
+```bash
+nameserver 192.168.0.1
+nameserver 114.114.114.114
+
+```
+
 slave节点依然需要使用root账户
 
 ```bash
