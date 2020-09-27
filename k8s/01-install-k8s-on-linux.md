@@ -94,8 +94,8 @@ sudo systemctl enable kubelet.service
 ```bash
 sudo swapoff -a
 sudo modprobe br_netfilter
-sudo echo 1 > /proc/sys/net/bridge/bridge-nf-call-iptables
-sudo echo 1 > /proc/sys/net/bridge/bridge-nf-call-ip6tables
+sudo echo "1" > /proc/sys/net/bridge/bridge-nf-call-iptables
+sudo echo "1" > /proc/sys/net/bridge/bridge-nf-call-ip6tables
 sudo sysctl -p
 ```
 
