@@ -101,10 +101,6 @@ sudo sysctl -p
 
 ##### CentOS:
 
-关闭swap
-
-swapoff -a
-
 编辑`/etc/fstab`
 
 ```text
@@ -119,10 +115,6 @@ sudo systemctl stop firewalld
 sudo systemctl disable firewalld
 ```
 
-iptables dose not exist
-```bash
-modprobe br_netfilter && echo 1 > /proc/sys/net/bridge/bridge-nf-call-iptables
-```
 
 编辑`/etc/selinux/config`
 
