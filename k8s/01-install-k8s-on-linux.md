@@ -23,7 +23,7 @@ slave (2) | bear         | 192.168.99.113
 ```json
 {
   "registry-mirrors": ["https://registry.docker-cn.com"],
-  "insecure-registries": ["<harbo 地址>"],
+  "insecure-registries": ["0.0.0.0"],
   "exec-opts": ["native.cgroupdriver=systemd"],
   "iptables": false,
   "dns": ["114.114.114.114", "8.8.8.8", "8.8.4.4"]
@@ -49,8 +49,6 @@ EOF
 
 gpg --keyserver keyserver.ubuntu.com --recv-keys BA07F4FB
 gpg --export --armor BA07F4FB | sudo apt-key add -
-sudo apt-get update
-
 sudo apt-get update
 
 sudo apt-get install kubeadm kubelet kubectl -y
